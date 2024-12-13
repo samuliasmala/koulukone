@@ -1,2 +1,4 @@
 requests==2.32.3
 sqlite-utils==3.38
+datasette==0.65.1
+pyproj==3.7.0
