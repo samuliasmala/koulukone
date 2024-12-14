@@ -6,19 +6,15 @@
 
 ```bash
 # Install venv if needed
-sudo apt install python3.10-venv
-
+sudo apt install python3-venv
 # Create environment
-python -m venv .venv # Python3 required, so use python3 if needed
+python3 -m venv .venv
+# Activate environment
 source .venv/bin/activate
+# Install dependencies
 pip install -r requirements.txt
-
-# Activate already created environment
-source .venv/bin/activate
-
-# Install plugins
+# Install Datasette plugins
 datasette install datasette-cluster-map
-
 # Serve database
 datasette serve --immutable data/yle-koulukone.db \
     --setting max_returned_rows 5000 \
@@ -28,6 +24,7 @@ datasette serve --immutable data/yle-koulukone.db \
 ## Sarakekuvauksia
 
 Voimassaolo (OLO):
+
 - 0 = Voimassaoleva
 - 1 = Lakkautettu tilastovuonna
 - 2 = Yhdistynyt toiseen oppilaitokseen tilastovuonna
@@ -36,6 +33,7 @@ Voimassaolo (OLO):
 - 7 = Tekninen poisto
 
 Oppilaitostyyppi (OLTYP):
+
 - 11 = Peruskoulut
 - 12 = Peruskouluasteen erityiskoulut
 - 15 = Lukiot
