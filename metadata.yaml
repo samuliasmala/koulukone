@@ -1,0 +1,43 @@
+databases:
+  yle-koulukone:
+    tables:
+      schools:
+        facets:
+          - luokat
+          - maakunta_nimi
+          - kunta_nimi
+    queries:
+      finnish_schools:
+        title: List Finnish schools
+        hide_sql: true
+        params:
+          - maakunta_nimi
+          - kunta_nimi
+          - luokat
+          - suomi_s2_osuus
+        sql: |-
+          select
+            l.onimi,
+            CAST(s.suomi_s2_osuus AS TEXT) || ' %' AS s2_oppilaita,
+            s.keskiarvo,
+            s.luokat,
+            l.oltyp_nimi,
+            l.tunn,
+            --l.olo,
+            --l.oltyp,
+            s.suomi_s2_osuus,
+            l.latitude,
+            l.longitude
+          from
+            locations l
+            join schools s on l.tunn = s.oppilaitosnumero
+          where
+            l.olo = 0 -- vain voimassaolevat
+            and s.kieli = 1 -- vain suomenkieliset
+            and s.oppilaitostyyppi <> 12 -- ei erityiskouluja
+            and (:maakunta_nimi = '' or LOWER(s.maakunta_nimi) = LOWER(:maakunta_nimi))
+            and (:kunta_nimi = '' or LOWER(s.kunta_nimi) = LOWER(:kunta_nimi))
+            and (:luokat = '' or s.luokat = :luokat)
+            and (:suomi_s2_osuus = '' or s.suomi_s2_osuus < :suomi_s2_osuus)
+          order by
+            l.onimi
