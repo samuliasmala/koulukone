@@ -11,6 +11,7 @@ databases:
         title: List Finnish schools
         hide_sql: true
         params:
+          - koulu
           - maakunta_nimi
           - kunta_nimi
           - luokat
@@ -35,6 +36,7 @@ databases:
             l.olo = 0 -- vain voimassaolevat
             and s.kieli = 1 -- vain suomenkieliset
             and s.oppilaitostyyppi <> 12 -- ei erityiskouluja
+            and (:koulu = '' or l.onimi LIKE '%' || :koulu || '%')
             and (:maakunta_nimi = '' or LOWER(s.maakunta_nimi) = LOWER(:maakunta_nimi))
             and (:kunta_nimi = '' or LOWER(s.kunta_nimi) = LOWER(:kunta_nimi))
             and (:luokat = '' or s.luokat = :luokat)
