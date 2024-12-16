@@ -1,3 +1,6 @@
+title: YLE Koulukone data
+about: GitHub repository for YLE Koulukone data
+about_url: https://github.com/samuliasmala/koulukone
 databases:
   yle-koulukone:
     tables:
