@@ -1,6 +1,8 @@
 # YLE koulukone data
 
-[YLE Koulukone](https://yle.fi/a/74-20018233) aineisto sekä koulujen sijainnit [Paikkatietohakemistosta](https://www.paikkatietohakemisto.fi/geonetwork/srv/fin/catalog.search#/metadata/6a8b4061-7a48-4667-bbdb-13952726c79f) visualisoituna [Datasette](https://datasette.io/)n avulla. Aineistot löytyvät CSV ja SQLite -muodoissa [data/](data) hakemistosta.
+[YLE Koulukone](https://yle.fi/a/74-20018233) aineisto sekä koulujen sijainnit [Paikkatietohakemistosta](https://www.paikkatietohakemisto.fi/geonetwork/srv/fin/catalog.search#/metadata/6a8b4061-7a48-4667-bbdb-13952726c79f) visualisoituna kartalle [Datasette](https://datasette.io/)n avulla. Aineistot löytyvät CSV ja SQLite -muodoissa [data/](data) hakemistosta.
+
+[Testaa visualisointia](https://koulukone.samcode.fi/yle-koulukone/finnish_schools) ja katso miten koulut sijoittuvat kartalle.
 
 ## Käyttöönotto
 
